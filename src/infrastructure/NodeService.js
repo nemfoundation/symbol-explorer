@@ -409,7 +409,7 @@ class NodeService {
 			chainHeight: node.chainInfo.chainHeight,
 			finalizationHeight: node.chainInfo.finalizationHeight,
 			version: node.version,
-			rewardPrograms: node.rewardPrograms
+			rewardPrograms: node.rewardPrograms.map(program => `${program.name}: ${program.passed ? 'Passed' : 'Fail'}`)
 		}));
 
 		return helper.convertArrayToCSV(formattedData);

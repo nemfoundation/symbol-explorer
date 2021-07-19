@@ -35,7 +35,9 @@ const getNetworkTypeAddressFormat = {
 	[NetworkType.MAIN_NET]: 'nN',
 	[NetworkType.MIJIN]: 'mM',
 	[NetworkType.MIJIN_TEST]: 'sS',
-	[NetworkType.TEST_NET]: 'tT'
+	[NetworkType.TEST_NET]: 'tT',
+	[NetworkType.PRIVATE_TEST]: 'vV',
+	[NetworkType.PRIVATE]: 'pP'
 };
 
 class helper {
@@ -413,7 +415,7 @@ class helper {
 
 	static truncString(str, strLen = 4) {
 		if (typeof str === 'string') {
-			if (str.length > strLen * 2)
+			if (str.length > strLen * 2 + 1)
 				return `${str.substring(0, strLen)}...${str.substring(str.length - strLen, str.length)}`;
 			return str;
 		}
