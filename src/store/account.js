@@ -149,7 +149,7 @@ export default {
 			address: Address
 				.createFromRawAddress(state.currentAccountAddress)
 				.pretty(),
-			balance: getters.OwnedMosaic?.data[0]?.amount || 0,
+			mosaic: getters.OwnedMosaic?.data[0],
 			alias: getters.info?.data?.accountAliasNames /* || Constants.Message.UNAVAILABLE */
 		})
 	},

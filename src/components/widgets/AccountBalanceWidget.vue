@@ -81,7 +81,7 @@ export default {
 		},
 
 		balance() {
-			return this.data.balance || '0';
+			return this.data.mosaic?.amount || '0';
 		},
 
 		address() {
@@ -95,7 +95,16 @@ export default {
 		},
 
 		mosaicName() {
-			return this.data.mosaicName || 'XYM';
+			const mosaicAlias = this.data.mosaic?.mosaicAliasNames[0];
+
+			if (mosaicAlias) {
+				const mosaicNamespaces = mosaicAlias.split('.');
+				const mosaicLastSubnamespace = mosaicNamespaces.pop();
+
+				return mosaicLastSubnamespace;
+			}
+
+			return this.data.mosaic?.mosaicId || 'Network Currency';
 		},
 
 		loading() {
@@ -189,6 +198,7 @@ export default {
         .mosaic {
             font-size: 1.5rem;
             line-height: 2.25rem;
+			text-transform: uppercase;
         }
 
         .balance {
